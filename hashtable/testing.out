@@ -1,0 +1,44 @@
+gcc -Wall -pedantic -std=c11 -ggdb  -I../lib   -c -o hashtabletest.o hashtabletest.c
+gcc -Wall -pedantic -std=c11 -ggdb  -I../lib hashtabletest.o hashtable.o hash.o set.o ../lib/file.o  -o hashtabletest
+./hashtabletest < test.names
+Create first and second hashtables...
+
+Test with null hashtable, good key, good item...
+test with null key...
+test with null item...
+test with null hashtable, null key, null item...
+
+Count (should be zero): 0
+
+Testing hashtable_insert...
+
+Count (should be 4): 4
+
+The hashtable:
+{(null key or item)}
+{(null key or item)}
+{(George,Walton)}
+{}
+{}
+{(Paul,Walton)}
+{}
+{}
+{(Peter,Walton)}
+{(Mary,Walton)}
+
+
+The new hashtable:
+Count (should be 4): 4
+{(null key or item)}
+{(null key or item)}
+{(George,Walton)}
+{}
+{}
+{(Paul,Walton)}
+{}
+{}
+{(Peter,Walton)}
+{(Mary,Walton)}
+
+
+delete the hashtables...
