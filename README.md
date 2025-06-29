@@ -75,20 +75,20 @@ The starter kit provided code for the hash function and the header files for set
 
 ### General notes for caller
 
-	* The caller must pass a pointer to the code; the data structure holds that pointer, and later returns it to the caller in response to an 'extract' or 'find' operation.
-	* Each of these modules doesn't know, or doesn't care, what kind of things the items are. The module doesn't allocate memory for items, free memory for items, or copy items - it just tracks the *pointer* to the item.
-	* The caller is responsible for the *item* pointer, which must be allocated by the caller.
+* The caller must pass a pointer to the code; the data structure holds that pointer, and later returns it to the caller in response to an 'extract' or 'find' operation.
+* Each of these modules doesn't know, or doesn't care, what kind of things the items are. The module doesn't allocate memory for items, free memory for items, or copy items - it just tracks the *pointer* to the item.
+* The caller is responsible for the *item* pointer, which must be allocated by the caller.
 The modules' `_delete` function (like a destructor) allows the caller to provide a custom `itemdelete` function that knows how to free any memory consumed by an item.
-	* For this reason, the caller must avoid inserting the same item (same address) multiple times; later, the `itemdelete` method would be called multiple times on that item... which could lead to trouble.
+* For this reason, the caller must avoid inserting the same item (same address) multiple times; later, the `itemdelete` method would be called multiple times on that item... which could lead to trouble.
 * Both **set** and **hashtable** work with string-type keys.
-When adding a new item with `set_insert()` or `hashtable_insert()`, both modules make their own copy of the string - presumably in memory allocated by `malloc()`.
-	* The module is then responsible for this memory - and later freeing it - just like any other memory it allocates.  This 'copy' semantic is convenient for the caller, who need not worry about how to allocate and manage the key string after inserting it into the set or hashtable.
+* When adding a new item with `set_insert()` or `hashtable_insert()`, both modules make their own copy of the string - presumably in memory allocated by `malloc()`.
+* The module is then responsible for this memory - and later freeing it - just like any other memory it allocates.  This 'copy' semantic is convenient for the caller, who need not worry about how to allocate and manage the key string after inserting it into the set or hashtable.
 
   ### Assumption
-	* We assume that a non-NULL `key` is a proper C string; that is, it is null-terminated.
+* We assume that a non-NULL `key` is a proper C string; that is, it is null-terminated.
 
  ### Tools used
-  * We use `valgrind` to test for memory leaks. 
+* We use `valgrind` to test for memory leaks. 
 
  ### Files in each module
 * a header file and a source file. Note: ur **hashtable**, in addition to its header and source file, also has the header and source files of **set** as the **hashtable** uses a **set** struct. 
