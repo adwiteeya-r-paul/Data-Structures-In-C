@@ -84,7 +84,7 @@ The modules' `_delete` function (like a destructor) allows the caller to provide
 * When adding a new item with `set_insert()` or `hashtable_insert()`, both modules make their own copy of the string - presumably in memory allocated by `malloc()`.
 * The module is then responsible for this memory - and later freeing it - just like any other memory it allocates.  This 'copy' semantic is convenient for the caller, who need not worry about how to allocate and manage the key string after inserting it into the set or hashtable.
 
-  ### Assumption
+### Assumption
 * We assume that a non-NULL `key` is a proper C string; that is, it is null-terminated.
 
  ### Tools used
@@ -98,6 +98,6 @@ The modules' `_delete` function (like a destructor) allows the caller to provide
 * text files used as input for testing.
 * `testing.out`, which is the output of running `make test &> testing.out` inside that subdirectory.
 
-## Implementation
+### Implementation
 
 We implement the **set** and **counters** as simplified linked lists. The **hashtable** module is an array of pointers to **set**s.
