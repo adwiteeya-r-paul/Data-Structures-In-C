@@ -1,0 +1,24 @@
+gcc -Wall -pedantic -std=c11 -ggdb  -I../lib   -c -o settest.o settest.c
+gcc -Wall -pedantic -std=c11 -ggdb  -I../lib settest.o set.o ../lib/file.o  -o settest
+./settest < test.names
+Create first set...
+
+Test with null set, good key, good item...
+test with null key...
+test with null item...
+test with null set, null key, null item...
+
+Count (should be zero): 0
+
+Testing set_insert...
+
+Count (should be 4): 4
+
+The set:
+{George Walton,Mary Walton,Paul Walton,Peter Walton}
+
+The new set:
+Count (should be 4): 4
+{George Walton,Mary Walton,Paul Walton,Peter Walton}
+
+delete the sets...
